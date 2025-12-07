@@ -1,115 +1,137 @@
-#😷 Lockdown Nostalgia 2020 - CTF Challenge
+# 😷 Lockdown Nostalgia 2020 – CTF Challenge
 
-"Connection Restored... hopefully."
+**“Connection Restored... hopefully.”**
 
-Welcome to Lockdown Nostalgia 2020, a browser-based Capture The Flag (CTF) puzzle game that transports you back to the chaos of remote work in early 2020. This project simulates a retro/glitchy desktop environment where players must cooperate to reboot a crashed server.
+Lockdown Nostalgia 2020 is a browser-based Capture The Flag (CTF) puzzle game set during the early days of remote work in 2020. Players navigate a retro, glitchy desktop environment and work together to reboot a crashed server.
 
-#🎮 Game Overview
+---
 
-The game is designed for two players (or one player alternating roles) who must communicate to solve the puzzle.
+## 🎮 Game Overview
 
-The Employee: Stuck on a glitchy desktop interface, they must find broken files and error messages.
+The game supports **two players** (or one player switching roles):
 
-The SysAdmin: Accesses the server logs and reference manuals. They hold the key to translating the Employee's chaos into technical data.
+### 👤 The Employee
+- Clicks icons on a glitchy desktop
+- Finds hidden system errors
+- Reports error messages to the SysAdmin
 
-Objective: Find 6 specific system errors, translate them into HTTP Status Codes, and enter the correct sequence to reboot the server.
+### 🖥️ The SysAdmin
+- Reads server logs and documentation
+- Matches errors to HTTP status codes
+- Provides the correct 6-digit reboot code
 
-#🛠️ Tech Stack
+### 🎯 Objective
+Find 6 system errors, convert them into HTTP status codes, and enter the correct sequence to reboot the server.
 
-This project uses a secure client-server architecture to prevent client-side cheating (inspect element).
+---
 
-Frontend: HTML5, CSS3 (Animations), Vanilla JavaScript.
+## 🛠️ Tech Stack
 
-Backend: Node.js, Express.js.
+### Frontend
+- HTML5  
+- CSS3 (Animations)  
+- Vanilla JavaScript
 
-Security: Server-side validation of the answer key.
+### Backend
+- Node.js  
+- Express.js
 
-#🚀 Installation & Setup
+### Security
+- Server-side validation  
+- No client-side answer exposure
 
-Prerequisites
+---
 
-You must have Node.js installed on your computer.
+## 🚀 Installation & Setup
 
-Step 1: Download
+### 1️⃣ Prerequisites
+You must have **Node.js** installed.
 
-Download the project files and ensure your folder structure looks like this:
+### 2️⃣ Project Structure
 
+```text
 lockdown-ctf/
-├── package.json
-├── server.js
+├── package.json             # Dependencies configuration
+├── server.js                # Main server entry point
 ├── config/
-│   └── gameConfig.js
+│   └── gameConfig.js        # Secret answer key location
 ├── routes/
-│   └── gameRoutes.js
+│   └── gameRoutes.js        # API route logic
 └── public/
-    ├── index.html
+    ├── index.html           # Main game interface
     ├── css/
-    │   └── style.css
+    │   └── style.css        # Styles and animations
     └── js/
-        └── script.js
+        └── script.js        # Frontend logic
+```
+## 🚀 Installation & Setup
 
+### 1️⃣ Install Dependencies
 
+Navigate to your project folder and run:
 
-Step 2: Install Dependencies
-
-Open your terminal/command prompt, navigate to the project folder, and run:
-
+```bash
 npm install
+```
 
-
-
-Step 3: Run the Server
-
-Start the application by running:
-
+```bash
 node server.js
+```
 
+You should see:
 
-
-You should see the message:
+```text
 ✅ Server is running securely at http://localhost:3000
+```
 
-Step 4: Play!
-
-Open your web browser and navigate to:
+Play the Game
+Open your browser and go to:
+```text
 http://localhost:3000
+```
 
-#🕵️ How to Play
+## 🕵️ How to Play
 
-Role 1: The Employee 👤
+### 👤 Role 1: The Employee
 
-Your View: A chaotic desktop filled with icons (Zoom, Slack, Netflix, etc.).
+**View:** A chaotic desktop filled with Zoom, Slack, Netflix, and decoy icons.
 
-Your Job: Click around! Most icons are decoys, but 6 specific icons will trigger SYSTEM ERRORS.
+**Tasks:**
+- Click around to find the 6 real system errors
+- Read the yellow Post-it Note (“My Day So Far”) to determine the correct order
+- Describe each error message to the SysAdmin
 
-The Hint: Read the Yellow Post-it Note ("My Day So Far") to understand the order of events.
+### 🖥️ Role 2: The SysAdmin
 
-The Task: Describe the error messages to the SysAdmin.
+**View:** Terminal interface showing logs and documentation.
 
-Role 2: The SysAdmin 🖥️
+**Tasks:**
+- Check timestamps in the incident log
+- Match the Employee’s errors to HTTP status codes using the Reference Manual
+- Provide the correct 6-digit reboot code
 
-Your View: A terminal interface with server logs and technical tables.
+---
 
-Your Job: Look at the Incident Log to see when errors occurred.
+## 📖 Reference Manual (HTTP Status Codes)
 
-The Task: Match the Employee's description to the HTTP Status Code Reference Manual (e.g., "Page not found" = 404).
+| HTTP Code | Status             | Meaning                                        |
+|----------:|-------------------|------------------------------------------------|
+| 301       | Moved Permanently  | Resource moved (e.g., folder relocated)       |
+| 401       | Unauthorized       | Login or authentication failed                |
+| 403       | Forbidden          | Server refuses access (e.g., VPN blocked)     |
+| 404       | Not Found          | Resource not found                             |
+| 418       | I'm a Teapot       | Cannot brew coffee with a teapot (Smart Toaster) |
+| 503       | Service Unavailable| Server overloaded (e.g., Netflix crash)      |
 
-The Solution: Provide the Employee with the correct code sequence.
+---
 
-#🔐 Security Features
+## 🔐 Security Features
 
-Unlike basic HTML games, the answer code is not stored in the browser.
+- Player enters a **6-digit code**
+- `script.js` sends a **POST** request to `/api/check-code`
+- The server validates it against the secret in:
 
-The User enters a code.
+```text
+config/gameConfig.js
+```
 
-script.js sends a POST request to /api/check-code.
-
-The server compares it against the secret in config/gameConfig.js.
-
-The server responds with Success or Fail.
-
-Trying to cheat by inspecting the source code will only reveal the API endpoint, not the password!
-
-📝 License
-
-This project is open source. Feel free to modify the chaos!
