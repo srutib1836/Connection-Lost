@@ -1,10 +1,10 @@
-😷 Lockdown Nostalgia 2020 - CTF Challenge
+#😷 Lockdown Nostalgia 2020 - CTF Challenge
 
 "Connection Restored... hopefully."
 
 Welcome to Lockdown Nostalgia 2020, a browser-based Capture The Flag (CTF) puzzle game that transports you back to the chaos of remote work in early 2020. This project simulates a retro/glitchy desktop environment where players must cooperate to reboot a crashed server.
 
-🎮 Game Overview
+#🎮 Game Overview
 
 The game is designed for two players (or one player alternating roles) who must communicate to solve the puzzle.
 
@@ -14,7 +14,7 @@ The SysAdmin: Accesses the server logs and reference manuals. They hold the key 
 
 Objective: Find 6 specific system errors, translate them into HTTP Status Codes, and enter the correct sequence to reboot the server.
 
-🛠️ Tech Stack
+#🛠️ Tech Stack
 
 This project uses a secure client-server architecture to prevent client-side cheating (inspect element).
 
@@ -24,7 +24,7 @@ Backend: Node.js, Express.js.
 
 Security: Server-side validation of the answer key.
 
-🚀 Installation & Setup
+#🚀 Installation & Setup
 
 Prerequisites
 
@@ -74,7 +74,7 @@ Step 4: Play!
 Open your web browser and navigate to:
 http://localhost:3000
 
-🕵️ How to Play
+#🕵️ How to Play
 
 Role 1: The Employee 👤
 
@@ -96,7 +96,7 @@ The Task: Match the Employee's description to the HTTP Status Code Reference Man
 
 The Solution: Provide the Employee with the correct code sequence.
 
-🔐 Security Features
+#🔐 Security Features
 
 Unlike basic HTML games, the answer code is not stored in the browser.
 
