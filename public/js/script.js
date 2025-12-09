@@ -14,15 +14,43 @@ function playErrorSound() {
     } catch (e) { console.log('Audio not available'); }
 }
 
-function selectRole(role) {
-    document.getElementById('landing').classList.add('hidden');
-    if (role === 'employee') {
-        document.getElementById('employee').style.display = 'block';
-        updateClock();
-        setInterval(updateClock, 1000);
-        setTimeout(showInfoModal, 500);
-    } else {
-        document.getElementById('sysadmin').style.display = 'block';
+// --- NEW: Authentication Logic ---
+async function authenticateUser() {
+    const accessCode = document.getElementById('accessCodeInput').value.trim();
+    const errorMsg = document.getElementById('loginError');
+
+    if (!accessCode) return;
+
+    try {
+        const response = await fetch('/api/auth', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ accessCode: accessCode })
+        });
+        
+        const data = await response.json();
+
+        if (data.success) {
+            // Hide Login Screen
+            document.getElementById('landing').classList.add('hidden');
+            
+            // Show Specific Role Interface based on backend response
+            if (data.role === 'employee') {
+                document.getElementById('employee').style.display = 'block';
+                updateClock();
+                setInterval(updateClock, 1000);
+                setTimeout(showInfoModal, 500);
+            } else if (data.role === 'sysadmin') {
+                document.getElementById('sysadmin').style.display = 'block';
+            }
+        } else {
+            // Show Error
+            playErrorSound();
+            errorMsg.style.display = 'block';
+            setTimeout(() => errorMsg.style.display = 'none', 3000);
+        }
+    } catch (error) {
+        console.error('Auth Error:', error);
     }
 }
 
