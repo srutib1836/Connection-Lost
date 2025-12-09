@@ -4,161 +4,135 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lockdown Nostalgia 2020 - Remote Work Nightmare</title>
-    <!-- Updated path to CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Landing Page -->
+    <!-- Landing Page (Login Screen) -->
     <div id="landing">
         <h1>LOCKDOWN NOSTALGIA 2020</h1>
-        <p>INITIALIZE CONNECTION:</p>
-        <p style="font-size: 1.2rem; margin-top: -1.5rem;">Are you...</p>
-        <div class="role-buttons">
-            <button class="role-btn" onclick="selectRole('employee')">EMPLOYEE</button>
-            <button class="role-btn" onclick="selectRole('sysadmin')">SYSADMIN</button>
+        <p>SECURE CONNECTION REQUIRED</p>
+        
+        <!-- NEW: Login Form -->
+        <div class="login-container" style="margin-top: 2rem; display: flex; flex-direction: column; gap: 15px; align-items: center;">
+            <input type="password" id="accessCodeInput" placeholder="ENTER ACCESS CODE" 
+                   style="background: #000; border: 2px solid #0f0; color: #0f0; padding: 15px; font-family: 'Courier New', monospace; font-size: 1.2rem; text-align: center; width: 300px; outline: none;">
+            
+            <button class="role-btn" onclick="authenticateUser()" style="width: 100%;">CONNECT</button>
+            
+            <p id="loginError" style="color: #ff0000; display: none; margin-top: 10px; font-weight: bold; background: #000; padding: 5px; border: 1px solid #ff0000;">⚠️ INVALID CREDENTIALS</p>
         </div>
+
+        <p style="font-size: 0.8rem; margin-top: 2rem; color: #005500;">Authorized Personnel Only</p>
     </div>
 
     <!-- Employee Interface -->
     <div id="employee" class="screen-flicker">
         <div class="desktop-bg">
-            <!-- Row 1: Top Icons -->
+            <!-- Row 1 -->
             <div class="desktop-icon" style="top: 20px; left: 20px;" onclick="showDecoy('calc')">
-                <div class="icon-img">🔢</div>
-                <div class="icon-label">Calculator</div>
+                <div class="icon-img">🔢</div><div class="icon-label">Calculator</div>
             </div>
             <div class="desktop-icon" style="top: 20px; left: 130px;" onclick="showDecoy('notepad')">
-                <div class="icon-img">📝</div>
-                <div class="icon-label retro-label">Notepad.exe</div>
+                <div class="icon-img">📝</div><div class="icon-label retro-label">Notepad.exe</div>
             </div>
             <div class="desktop-icon" style="top: 20px; left: 240px;" onclick="showDecoy('solitaire')">
-                <div class="icon-img">🃏</div>
-                <div class="icon-label">Solitaire</div>
+                <div class="icon-img">🃏</div><div class="icon-label">Solitaire</div>
             </div>
             <div class="desktop-icon" style="top: 20px; left: 350px;" onclick="showDecoy('mspaint')">
-                <div class="icon-img">🎨</div>
-                <div class="icon-label retro-label">MS_Paint</div>
+                <div class="icon-img">🎨</div><div class="icon-label retro-label">MS_Paint</div>
             </div>
             <div class="desktop-icon" style="top: 20px; left: 460px;" onclick="showDecoy('music')">
-                <div class="icon-img">🎵</div>
-                <div class="icon-label">Winamp</div>
+                <div class="icon-img">🎵</div><div class="icon-label">Winamp</div>
             </div>
             <div class="desktop-icon" style="top: 20px; left: 570px;" onclick="showDecoy('email')">
-                <div class="icon-img">📧</div>
-                <div class="icon-label">Outlook</div>
+                <div class="icon-img">📧</div><div class="icon-label">Outlook</div>
             </div>
             <div class="desktop-icon" style="top: 20px; left: 680px;" onclick="showDecoy('zoom')">
-                <div class="icon-img">📹</div>
-                <div class="icon-label">Zoom</div>
+                <div class="icon-img">📹</div><div class="icon-label">Zoom</div>
             </div>
             <div class="desktop-icon" style="top: 20px; left: 790px;" onclick="showInfoModal()">
-                <div class="icon-img">📄</div>
-                <div class="icon-label retro-label">Info.txt</div>
+                <div class="icon-img">📄</div><div class="icon-label retro-label">Info.txt</div>
             </div>
 
             <!-- Row 2 -->
             <div class="desktop-icon" style="top: 150px; left: 20px;" onclick="showError1()">
-                <div class="icon-img">📁</div>
-                <div class="icon-label">Payroll_Final</div>
+                <div class="icon-img">📁</div><div class="icon-label">Payroll_Final</div>
             </div>
             <div class="desktop-icon" style="top: 150px; left: 130px;" onclick="showDecoy('recycle')">
-                <div class="icon-img">🗑️</div>
-                <div class="icon-label retro-label">RecycleBin</div>
+                <div class="icon-img">🗑️</div><div class="icon-label retro-label">RecycleBin</div>
             </div>
             <div class="desktop-icon" style="top: 150px; left: 240px;" onclick="showDecoy('photos')">
-                <div class="icon-img">🖼️</div>
-                <div class="icon-label">Photos</div>
+                <div class="icon-img">🖼️</div><div class="icon-label">Photos</div>
             </div>
             <div class="desktop-icon" style="top: 150px; left: 350px;" onclick="showDecoy('word')">
-                <div class="icon-img">📃</div>
-                <div class="icon-label">Word</div>
+                <div class="icon-img">📃</div><div class="icon-label">Word</div>
             </div>
             <div class="desktop-icon" style="top: 150px; left: 460px;" onclick="showDecoy('excel')">
-                <div class="icon-img">📊</div>
-                <div class="icon-label retro-label">Excel</div>
+                <div class="icon-img">📊</div><div class="icon-label retro-label">Excel</div>
             </div>
             <div class="desktop-icon" style="top: 150px; left: 570px;" onclick="showError5()">
-                <div class="icon-img">🔒</div>
-                <div class="icon-label retro-label">Corporate_VPN</div>
+                <div class="icon-img">🔒</div><div class="icon-label retro-label">Corporate_VPN</div>
             </div>
             <div class="desktop-icon" style="top: 150px; left: 680px;" onclick="showDecoy('powerpoint')">
-                <div class="icon-img">📽️</div>
-                <div class="icon-label">PowerPoint</div>
+                <div class="icon-img">📽️</div><div class="icon-label">PowerPoint</div>
             </div>
             <div class="desktop-icon" style="top: 150px; left: 790px;" onclick="showError2()">
-                <div class="icon-img">🌐</div>
-                <div class="icon-label retro-label">Intranet_Portal</div>
+                <div class="icon-img">🌐</div><div class="icon-label retro-label">Intranet_Portal</div>
             </div>
 
             <!-- Row 3 -->
             <div class="desktop-icon" style="top: 280px; left: 20px;" onclick="showError3()">
-                <div class="icon-img">🎬</div>
-                <div class="icon-label">Netflix_Party</div>
+                <div class="icon-img">🎬</div><div class="icon-label">Netflix_Party</div>
             </div>
             <div class="desktop-icon" style="top: 280px; left: 130px;" onclick="showDecoy('games')">
-                <div class="icon-img">🎮</div>
-                <div class="icon-label">Steam</div>
+                <div class="icon-img">🎮</div><div class="icon-label">Steam</div>
             </div>
             <div class="desktop-icon" style="top: 280px; left: 240px;" onclick="showError4()">
-                <div class="icon-img">🍞</div>
-                <div class="icon-label">Smart_Toaster</div>
+                <div class="icon-img">🍞</div><div class="icon-label">Smart_Toaster</div>
             </div>
             <div class="desktop-icon" style="top: 280px; left: 350px;" onclick="showDecoy('spotify')">
-                <div class="icon-img">🎧</div>
-                <div class="icon-label retro-label">Spotify</div>
+                <div class="icon-img">🎧</div><div class="icon-label retro-label">Spotify</div>
             </div>
             <div class="desktop-icon" style="top: 280px; left: 460px;" onclick="showDecoy('discord')">
-                <div class="icon-img">💭</div>
-                <div class="icon-label">Discord</div>
+                <div class="icon-img">💭</div><div class="icon-label">Discord</div>
             </div>
             <div class="desktop-icon" style="top: 280px; left: 570px;" onclick="showDecoy('chat')">
-                <div class="icon-img">💬</div>
-                <div class="icon-label">Slack</div>
+                <div class="icon-img">💬</div><div class="icon-label">Slack</div>
             </div>
             <div class="desktop-icon" style="top: 280px; left: 680px;" onclick="showDecoy('chrome')">
-                <div class="icon-img">🌍</div>
-                <div class="icon-label retro-label">Chrome</div>
+                <div class="icon-img">🌍</div><div class="icon-label retro-label">Chrome</div>
             </div>
             <div class="desktop-icon" style="top: 280px; left: 790px;" onclick="showError6()">
-                <div class="icon-img">📂</div>
-                <div class="icon-label">Project_Alpha_2019</div>
+                <div class="icon-img">📂</div><div class="icon-label">Project_Alpha_2019</div>
             </div>
 
             <!-- Row 4 -->
             <div class="desktop-icon" style="top: 410px; left: 20px;" onclick="showDecoy('calendar')">
-                <div class="icon-img">📅</div>
-                <div class="icon-label">Calendar</div>
+                <div class="icon-img">📅</div><div class="icon-label">Calendar</div>
             </div>
             <div class="desktop-icon" style="top: 410px; left: 130px;" onclick="showDecoy('tasks')">
-                <div class="icon-img">✅</div>
-                <div class="icon-label retro-label">To-Do List</div>
+                <div class="icon-img">✅</div><div class="icon-label retro-label">To-Do List</div>
             </div>
             <div class="desktop-icon" style="top: 410px; left: 240px;" onclick="showDecoy('camera')">
-                <div class="icon-img">📷</div>
-                <div class="icon-label">Camera</div>
+                <div class="icon-img">📷</div><div class="icon-label">Camera</div>
             </div>
             <div class="desktop-icon" style="top: 410px; left: 350px;" onclick="showDecoy('files')">
-                <div class="icon-img">📁</div>
-                <div class="icon-label">My Documents</div>
+                <div class="icon-img">📁</div><div class="icon-label">My Documents</div>
             </div>
             <div class="desktop-icon" style="top: 410px; left: 460px;" onclick="showDecoy('weather')">
-                <div class="icon-img">☁️</div>
-                <div class="icon-label retro-label">Weather</div>
+                <div class="icon-img">☁️</div><div class="icon-label retro-label">Weather</div>
             </div>
             <div class="desktop-icon" style="top: 410px; left: 570px;" onclick="showDecoy('terminal')">
-                <div class="icon-img">⌨️</div>
-                <div class="icon-label">Terminal</div>
+                <div class="icon-img">⌨️</div><div class="icon-label">Terminal</div>
             </div>
             <div class="desktop-icon" style="top: 410px; left: 680px;" onclick="showDecoy('settings')">
-                <div class="icon-img">⚙️</div>
-                <div class="icon-label">Settings</div>
+                <div class="icon-img">⚙️</div><div class="icon-label">Settings</div>
             </div>
             <div class="desktop-icon" style="top: 410px; left: 790px;" onclick="showDecoy('backup')">
-                <div class="icon-img">💾</div>
-                <div class="icon-label retro-label">Backup</div>
+                <div class="icon-img">💾</div><div class="icon-label retro-label">Backup</div>
             </div>
 
-            <!-- Standard Post-it Notes -->
+            <!-- Post-it Notes -->
             <div class="postit postit-pink" style="top: 50px; left: 950px;">
                 <strong>🍕 Lunch</strong><br>12:30pm<br>Don't forget!
             </div>
@@ -169,18 +143,16 @@
                 <strong>🔑 WiFi:</strong><br>TotallyNot<br>Admin123
             </div>
 
-            <!-- UPDATED YELLOW POST-IT (The Diary Hint) -->
+            <!-- Yellow Diary Hint -->
             <div class="postit postit-yellow" style="top: 300px; left: 900px; transform: rotate(-2deg); font-size: 0.8rem; width: 220px; height: auto; min-height: 240px;">
-                <div class="tape-header">
-                    😡 My Day So Far:
-                </div>
+                <div class="tape-header">😡 My Day So Far:</div>
                 <div style="padding-top: 10px; line-height: 1.4;">
-                    1. Had an Identity crisis.<br>
-                    2. Hit a Dead End.<br>
-                    3. Totatally did not have a Meltdown.<br>
-                    4. Need a new Teapot.<br>
-                    5. Forbidden from eating cake.<br>
-                    6. I have Moved on.<br>
+                    1. Had an <u>Identity</u> crisis.<br>
+                    2. Hit a <u>Dead End</u>.<br>
+                    3. Total <u>Meltdown</u>.<br>
+                    4. I am a <u>Teapot</u>.<br>
+                    5. I am <u>Forbidden</u>.<br>
+                    6. I have <u>Moved</u> on.
                 </div>
             </div>
 
@@ -215,37 +187,29 @@
     <div id="sysadmin">
         <div class="terminal-content">
             <h1>═══ SERVER TERMINAL v2.0 ═══</h1>
-
             <div class="terminal-header">
                 <p>> SYSTEM STATUS: Critical Failures Detected</p>
                 <p>> DATE: March 25, 2020</p>
                 <p>> INSTRUCTION: Correlate user reports with the timestamped incident log below.</p>
             </div>
 
-            <!-- UPDATED INCIDENT LOG (THE ANSWER KEY ORDER) -->
             <p style="margin-top: 2rem; color: #ff0;">> SYSTEM INCIDENT LOG (CHRONOLOGICAL)</p>
             <table style="font-size: 0.85rem; border: 1px dashed #0f0; margin-top: 10px;">
                 <tr style="background: #003300;">
-                    <th style="width: 100px;">TIME</th>
-                    <th>EVENT TYPE</th>
+                    <th style="width: 100px;">TIME</th><th>EVENT TYPE</th>
                 </tr>
-                <tr><td>09:00 AM</td><td>AUTH_FAIL: Payroll System Access Attempt</td></tr> <!-- 401 -->
-                <tr><td>09:45 AM</td><td>LINK_ROT: Internal Portal Resource Missing</td></tr> <!-- 404 -->
-                <tr><td>10:30 AM</td><td>BANDWIDTH: Streaming Service Overload</td></tr>    <!-- 503 -->
-                <tr><td>11:15 AM</td><td>IOT_ERR: Smart Device Protocol Violation</td></tr>  <!-- 418 -->
-                <tr><td>01:00 PM</td><td>VPN_GTWY: User Access Forbidden</td></tr>          <!-- 403 -->
-                <tr><td>02:30 PM</td><td>LEGACY: Project Folder Migration Redirect</td></tr> <!-- 301 -->
+                <tr><td>09:00 AM</td><td>AUTH_FAIL: Payroll System Access Attempt</td></tr>
+                <tr><td>09:45 AM</td><td>LINK_ROT: Internal Portal Resource Missing</td></tr>
+                <tr><td>10:30 AM</td><td>BANDWIDTH: Streaming Service Overload</td></tr>
+                <tr><td>11:15 AM</td><td>IOT_ERR: Smart Device Protocol Violation</td></tr>
+                <tr><td>01:00 PM</td><td>VPN_GTWY: User Access Forbidden</td></tr>
+                <tr><td>02:30 PM</td><td>LEGACY: Project Folder Migration Redirect</td></tr>
             </table>
 
             <p style="margin-top: 2rem; color: #ff0;">> HTTP STATUS CODE REFERENCE MANUAL</p>
-
             <table>
                 <thead>
-                    <tr>
-                        <th class="code-col">CODE</th>
-                        <th>STATUS</th>
-                        <th>TECHNICAL DEFINITION</th>
-                    </tr>
+                    <tr><th class="code-col">CODE</th><th>STATUS</th><th>TECHNICAL DEFINITION</th></tr>
                 </thead>
                 <tbody>
                     <tr><td class="code-col">301</td><td>Moved Permanently</td><td>Resource permanently moved to a new URI.</td></tr>
@@ -268,7 +232,6 @@
         <p style="margin-top: 3rem; font-size: 1rem; color: #0ff;">...until tomorrow's standup meeting.</p>
     </div>
 
-    <!-- Updated path to JS -->
     <script src="js/script.js"></script>
 </body>
 </html>
