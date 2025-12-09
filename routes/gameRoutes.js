@@ -2,18 +2,24 @@ const express = require('express');
 const router = express.Router();
 const config = require('../config/gameConfig');
 
-// POST route to check the code
+router.post('/auth', (req, res) => {
+    const userCode = req.body.accessCode;
+    
+    const role = config.ROLE_CODES[userCode];
+
+    if (role) {
+        res.json({ success: true, role: role });
+    } else {
+        res.json({ success: false, message: "ACCESS DENIED" });
+    }
+});
+
 router.post('/check-code', (req, res) => {
     const userCode = req.body.code;
 
-    console.log(`[LOG] User attempted code: ${userCode}`);
-
-    // Compare user input with the secret config
     if (userCode === config.SECRET_CODE) {
-        // Success! Send a "true" flag back
         res.json({ success: true, message: "Code Accepted" });
     } else {
-        // Fail! Send a "false" flag back
         res.json({ success: false, message: "Invalid Code" });
     }
 });
