@@ -92,7 +92,7 @@ http://localhost:3000
 
 ## 🕵️ How to Play
 
-### PASSCODES : 
+### PASSCODES FOR LOGIN: 
 - Employee - WFH_HERO
 - Sysadmin - SUDO_MASTER
 
@@ -113,6 +113,9 @@ http://localhost:3000
 - Check timestamps in the incident log
 - Match the Employee’s errors to HTTP status codes using the Reference Manual
 - Provide the correct 6-digit reboot code
+
+### FINAL KEY :
+**401404503418403301**
 
 ---
 
