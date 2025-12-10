@@ -92,6 +92,10 @@ http://localhost:3000
 
 ## 🕵️ How to Play
 
+### PASSCODES : 
+- Employee - WFH_HERO
+- Sysadmin - SUDO_MASTER
+
 ### 👤 Role 1: The Employee
 
 **View:** A chaotic desktop filled with Zoom, Slack, Netflix, and decoy icons.
